@@ -1,12 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+
 let initialState = {
     items: [],
     paginate: {
         firstItemId: 1,
         lastItemId: 10,
     },
-    category: "all"
+    category: "all",
+    showModal: false
 }
 
 const productSlice = createSlice({
@@ -43,6 +45,9 @@ const productSlice = createSlice({
         },
         addCategory(state,action){
             state.category = action.payload.category
+        },
+        showModal(state, action){
+            state.showModal = action.payload.status
         }
 
     }   

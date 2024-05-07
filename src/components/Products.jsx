@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { productActions } from "../productslice";
 
 import Categories from "./categories";
+import ProductItem from "./ProductItem";
 
 const Products = () => {
   const products = useSelector((store) => store.ecom.items);
@@ -47,14 +48,10 @@ console.log(products)
             return (<>
             { (selectedCategory === "all" && item.id >= firstItemId &&  item.id <= lastItemId)
                 ?
-                <li key={item.id} className="product-items">
-                    <img src={item.images[0]} alt="product image" id="product-images"/>
-                  </li>  
+               <ProductItem item={item}/>
                   
                   :(selectedCategory === item.category) 
-                  &&  <li key={item.id} className="product-items">
-                  <img src={item.images[0]} alt="product image" id="product-images"/>
-                </li>  
+                  &&  <ProductItem item={item}/>
                 }
                   
                   </>

@@ -1,21 +1,22 @@
 import Products from "./components/Products";
-import { Provider } from "react-redux";
-import store from "./store";
+
+import { useSelector } from "react-redux";
+
 function App() {
+  const showModal = useSelector((store) => store.ecom.showModal);
+console.log(showModal)
   return (
-    <Provider store={store}>
-    <div className="app">
-      <header>
-      <h2>Available Products</h2>
-      </header>
-      <main>
-        <Products />
-
-      </main>
-      
-    </div>
-    </Provider>
-
+    <>
+      {showModal && <div id="modal"></div>}
+      <div className="app">
+        <header>
+          <h2>Available Products</h2>
+        </header>
+        <main>
+          <Products />
+        </main>
+      </div>
+    </>
   );
 }
 
